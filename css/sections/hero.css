@@ -1,0 +1,244 @@
+/* ============================================================
+   Секция: Hero
+   ============================================================ */
+
+.hero {
+    background-color: var(--color-bg-base);
+    overflow: hidden;
+}
+
+.hero__container {
+    padding-top: var(--space-48);
+    padding-bottom: var(--space-40);
+}
+
+/* ── Десктоп: flex, текст слева + статы справа ──────────── */
+.hero__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-40);
+}
+
+/* ── Левый блок ──────────────────────────────────────────── */
+.hero__text-block {
+    flex: 1;
+    max-width: 881px;
+}
+
+.hero__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.hero__heading-line {
+    display: block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: var(--font-weight-bold);
+    font-size: clamp(52px, 7vw, 100px);
+    line-height: 0.95;
+    color: var(--color-text-heading);
+    text-transform: uppercase;
+}
+
+/* Строка между заголовком и описанием: эйброу | текст */
+.hero__mid-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    column-gap: var(--space-24);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-8);
+}
+
+.hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    margin: 0;
+}
+
+.hero__desc {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-light);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: var(--color-text-body);
+    margin: 0;
+}
+
+.hero__desc-accent {
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--ls-accent);
+}
+
+/* ── Правый блок: статбейджи ─────────────────────────────── */
+/* 2 колонки: [5 лет] [90% — высокий, span 2 строки] */
+/*            [200+]  [                              ] */
+.hero__stats {
+    display: grid;
+    grid-template-columns: 154px 154px;
+    grid-template-rows: auto auto;
+    gap: var(--space-16);
+    flex-shrink: 0;
+}
+
+.stat-badge--1 { grid-column: 1; grid-row: 1; }
+.stat-badge--2 { grid-column: 2; grid-row: 1 / span 2; }
+.stat-badge--3 { grid-column: 1; grid-row: 2; }
+
+/* ── Галерея ─────────────────────────────────────────────── */
+.hero__gallery {
+    margin-top: var(--space-40);
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.hero__gallery::-webkit-scrollbar { display: none; }
+.hero__gallery:active { cursor: grabbing; }
+
+.hero__gallery-track {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-16);
+    padding-inline: var(--container-pad);
+    padding-bottom: var(--space-40);
+    width: max-content;
+    min-width: 100%;
+}
+
+.hero__gallery-item {
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: var(--radius-photo);
+}
+
+.hero__gallery-item--circle { width: 320px; height: 320px; border-radius: var(--radius-circle); }
+.hero__gallery-item--tall   { width: 270px; height: 380px; }
+.hero__gallery-item--medium { width: 310px; height: 280px; }
+.hero__gallery-item--xtall  { width: 280px; height: 400px; }
+.hero__gallery-item--wide   { width: 240px; height: 360px; }
+
+.hero__gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow);
+    pointer-events: none;
+}
+
+.hero__gallery-item:hover .hero__gallery-img { transform: scale(1.04); }
+
+/* ── Планшет ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .hero__content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-32);
+    }
+
+    .hero__text-block { max-width: 100%; }
+
+    .hero__heading-line { font-size: clamp(40px, 5vw, 64px); }
+
+    .hero__mid-row {
+        margin-top: 0;
+        margin-bottom: 0;
+        gap: var(--space-24);
+    }
+
+    /* Статы — горизонтальный ряд */
+    .hero__stats {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: var(--space-12);
+    }
+
+    .stat-badge--1,
+    .stat-badge--2,
+    .stat-badge--3 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .hero__gallery-track { padding-inline: var(--container-pad-md); }
+
+    .hero__gallery-item--circle { width: 240px; height: 240px; }
+    .hero__gallery-item--tall   { width: 200px; height: 290px; }
+    .hero__gallery-item--medium { width: 230px; height: 210px; }
+    .hero__gallery-item--xtall  { width: 210px; height: 300px; }
+    .hero__gallery-item--wide   { width: 180px; height: 270px; }
+}
+
+/* ── Мобайл ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .hero__container { padding-inline: var(--container-pad-sm); }
+
+    .hero__content {
+        align-items: center;
+        gap: var(--space-24);
+    }
+
+    .hero__heading {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero__heading-line {
+        font-size: var(--fs-h1-sm);
+        line-height: var(--lh-h1-sm);
+        white-space: normal;
+    }
+
+    .hero__mid-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: var(--space-16);
+        gap: var(--space-16);
+    }
+
+    .hero__eyebrow { justify-content: center; }
+
+    .hero__desc {
+        font-size: var(--fs-caption);
+        text-align: center;
+    }
+
+    .hero__stats { justify-content: center; }
+
+    .hero__gallery { margin-top: var(--space-32); }
+
+    .hero__gallery-track {
+        padding-inline: var(--container-pad-sm);
+        padding-bottom: var(--space-32);
+        gap: var(--space-12);
+    }
+
+    .hero__gallery-item--circle { width: 200px; height: 200px; }
+    .hero__gallery-item--tall   { width: 160px; height: 220px; }
+    .hero__gallery-item--medium { width: 180px; height: 170px; }
+    .hero__gallery-item--xtall  { width: 165px; height: 240px; }
+    .hero__gallery-item--wide   { width: 150px; height: 210px; }
+}
+
+/* ── Узкий мобайл ────────────────────────────────────────── */
+@media (max-width: 375px) {
+    .hero__heading-line { font-size: 32px; line-height: 40px; }
+
+    .hero__gallery-item--circle { width: 160px; height: 160px; }
+    .hero__gallery-item--tall   { width: 130px; height: 180px; }
+    .hero__gallery-item--medium { width: 150px; height: 140px; }
+    .hero__gallery-item--xtall  { width: 135px; height: 200px; }
+    .hero__gallery-item--wide   { width: 125px; height: 175px; }
+}
