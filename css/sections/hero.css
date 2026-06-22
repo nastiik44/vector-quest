@@ -239,11 +239,16 @@
         white-space: normal;
         margin-bottom: 0;
         width: 100%;
+        /* МАГИЯ: Жестко заставляем длинные слова переноситься */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto; 
     }
 
     .hero__eyebrow { 
         justify-content: center;
         width: 100%;
+        flex-wrap: wrap; /* Защита от выпадания текста за края */
     }
 
     .hero__desc {
@@ -273,9 +278,9 @@
     .hero__gallery-item--wide   { width: 150px; height: 210px; }
 }
 
-/* ──Мобайл (375px) ────────────────────────────────── */
+/* ── Узкий Мобайл Hero (375px) ────────────────────────────────── */
 @media (max-width: 375px) {
-    .hero__heading-line { font-size: 32px; line-height: 40px; }
+    .hero__heading-line { font-size: 32px; line-height: 1.1; }
 
     .hero__gallery-item--circle { width: 160px; height: 160px; }
     .hero__gallery-item--tall   { width: 130px; height: 180px; }
