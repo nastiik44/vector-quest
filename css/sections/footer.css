@@ -1,4 +1,4 @@
-/* Footer — оранжевый, с SVG-углом */
+/* Footer, с SVG-углом */
 
 .footer {
     background-color: var(--color-primary);
@@ -12,14 +12,16 @@
     gap: 0;
     min-height: 500px;
 }
-
+ 
 /* ── Лого  */
 .footer__logo-wrap {
     grid-column: 1;
     grid-row: 1;
     padding-bottom: var(--space-24);
+    display: flex;
+    align-items: flex-end;
 }
-
+ 
 .footer__logo-text {
     font-family: var(--font-display);
     font-weight: var(--font-weight-medium);
@@ -28,22 +30,24 @@
     color: var(--color-bg-base);
     letter-spacing: -2px;
 }
-
+ 
 .footer__logo-svg {
     height: clamp(72px, 10vw, 140px);
     width: auto;
 }
-
+ 
 /* ── Векторный угол (правый верх)  */
 .footer__vector-wrap {
     grid-column: 2;
     grid-row: 1;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
     gap: var(--space-12);
     padding-bottom: var(--space-24);
 }
-
+ 
 .footer__vector-label {
     font-family: var(--font-body);
     font-weight: var(--font-weight-light);
@@ -57,44 +61,6 @@
     align-self: flex-start;
     margin-left: var(--space-16);
     line-height: 1.6;
-}
-
-.footer__corner-svg {
-    width: min(260px, 80%);
-    height: auto;
-    display: block;
-}
-
-/* Анимация угловой стрелки */
-.footer__corner-diagonal {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    animation: drawLine 1.2s ease forwards 0.3s;
-}
-
-.footer__corner-vert {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    animation: drawLine 0.8s ease forwards 0s;
-}
-
-.footer__corner-horiz {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    animation: drawLine 0.8s ease forwards 0.1s;
-}
-
-.footer__corner-head {
-    opacity: 0;
-    animation: fadeIn 0.3s ease forwards 1.4s;
-}
-
-@keyframes drawLine {
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
 }
 
 .footer__vector-step {
@@ -246,7 +212,7 @@
 
     /* Юридические ссылки — в самый низ */
     .footer__legal {
-        order: 1;          /* ← перемещает вниз внутри колонки */
+        order: 1;          
         flex-wrap: wrap;
         gap: var(--space-8);
     }
