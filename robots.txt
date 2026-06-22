@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vector-quest.ru/sitemap.xml
+Sitemap: https://nastiik44.github.io/vector-quest/sitemap.xml
