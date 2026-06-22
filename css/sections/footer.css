@@ -201,9 +201,50 @@
 
 .footer__legal-dot { opacity: 0.4; color: var(--color-bg-base); font-size: 11px; }
 
-/* ── Мобайл  */
+/* ── Мобайл Footer (768px) ────────────────────────────────────── */
 @media (max-width: 768px) {
+    .footer__container {
+        /* УБИВАЕМ 2 КОЛОНКИ: выстраиваем всё в один ряд сверху вниз */
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto;
+        gap: var(--space-32);
+        min-height: auto;
+    }
+
+    .footer__logo-wrap {
+        grid-column: 1;
+        grid-row: 1;
+        padding-bottom: 0;
+    }
+
+    .footer__vector-wrap {
+        grid-column: 1;
+        grid-row: 2; /* Опускаем под логотип */
+        padding-bottom: 0;
+        /* Убираем отступ, который на узком экране сдвигает текст вправо */
+        align-items: flex-start;
+    }
+
+    .footer__vector-label,
+    .footer__vector-step {
+        margin-left: 0; 
+    }
+
+    .footer__info {
+        grid-column: 1;
+        grid-row: 3;
+        padding-top: 0;
+    }
+
+    .footer__contacts {
+        grid-column: 1;
+        grid-row: 4;
+        padding-top: 0;
+    }
+
     .footer__bottom {
+        grid-column: 1;
+        grid-row: 5;
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-12);
@@ -221,10 +262,23 @@
         order: 0;
     }
 
-    /* Цвет — тёмный, не выбивается */
     .footer__legal-link,
     .footer__legal-dot {
         color: var(--color-bg-base);
         opacity: 1;
+    }
+}
+
+/* ── Узкий Мобайл Footer (375px) ──────────────────────────────── */
+@media (max-width: 375px) {
+    .footer__contact-name {
+        /* Чтобы длинные email/телефоны не ломали стрелку */
+        font-size: 20px; 
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .footer__contact-arrow-svg {
+        width: 28px; /* Чуть уменьшаем стрелку для узких экранов */
     }
 }
